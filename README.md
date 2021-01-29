@@ -11,7 +11,7 @@ The Emkay Library is a boutique collection of entertainment. Each year, The Libr
 
 ## Related Documents
 ### Entity-Relationship Diagram
-![Entity-Relationship Diagram for The Emkay Library](https://github.com/The-Emkay-Library/emkaylibrary/blob/master/CS340_ER_Revised.png)
+![Entity-Relationship Diagram for The Emkay Library](https://github.com/The-Emkay-Library/emkaylibrary/blob/master/public/CS340_ER_Revised.png)
 
 ### Schema
-![Schema for The Emkay Library](https://github.com/The-Emkay-Library/emkaylibrary/blob/master/Schema_Final.png)
+![Schema for The Emkay Library](https://github.com/The-Emkay-Library/emkaylibrary/blob/master/public/Schema_Final.png)
