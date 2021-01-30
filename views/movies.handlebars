@@ -36,17 +36,41 @@
                 <td>Slither</td>
             </tr>
         </table><br>
-        <form action="/action_page.php">
-            <label for="artist_id"><b>Artist ID:</b></label>
-            <input type="text" id="artist_id" name="artist_id" value="artist_id"><br>
-            <label for="mat_title"><b>Title:</b></label>
-            <input type="text" id="mat_title" name="mat_title" value="mat_title"><br>
-            <input type="submit" value="Add Movie">
-          </form> <br><br>
-          <form action="/action_page.php">
-            <label for="artist_id"><b>Artist ID:</b></label>
-            <input type="text" id="artist_id" name="artist_id" value="artist_id"><br>
-            <label for="mat_title"><b>Title:</b></label>
-            <input type="text" id="mat_title" name="mat_title" value="mat_title"><br>
-            <input type="submit" value="Delete Movie">
-          </form> <br>
+<h2>Update Patrons</h2>
+<form>
+  <fieldset>
+    <legend>Select Action</legend>
+    <label for="add">
+      <input type = "radio" name="action" value="add">Add
+    </label>
+    <label for="edit">
+      <input type= "radio" name="action" value="edit">Edit
+    </label>
+    <label for="delete">
+      <input type="radio" name="action" value="delete">Delete
+    </label>
+  </fieldset>
+
+<section>
+  <p>
+     <label for="movie_id">
+       <span>ID:</span>
+     </label>
+     <input type="text" id="name" name="movie_id">
+   </p>
+   <em>(Leave empty if adding a new movie)</em>
+ </section>
+   <p>
+      <label for="artist">
+        <span>Artist ID: </span>
+      </label>
+      <input type="text" id="artist_id" name="artist_id">
+    </p>
+    <p>
+       <label for="title">
+         <span>Title: </span>
+       </label>
+       <input type="text" id="title" name="title">
+     </p>
+  <button type="submit">Submit</button>
+</form>
