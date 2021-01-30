@@ -1,0 +1,42 @@
+<h1>Checkout or Return Items</h1>
+<form>
+  <fieldset>
+    <legend>Select Action</legend>
+    <label for="checkout">
+      <input type = "radio" name="action" value="checkout">Checkout
+    </label>
+    <label for="return">
+      <input type= "radio" name="action" value="return">Return
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Item Type</legend>
+    <label for="album">
+      <input type = "radio" name="action" value="album">Album
+    </label>
+    <label for="book">
+      <input type= "radio" name="action" value="book">Book
+    </label>
+    <label for="movie">
+      <input type= "radio" name="action" value="movie">Movie
+    </label>
+  </fieldset>
+
+<section>
+  <p>
+     <label for="patron_id">
+       <span>Patron ID:</span>
+     </label>
+     <input type="text" id="name" name="patron_id">
+   </p>
+   <p>
+      <label for="item_id">
+        <span>Item ID:</span>
+      </label>
+      <input type="text" id="name" name="item_id">
+    </p>
+   </section>
+
+  <button type="submit">Submit</button>
+</form>
