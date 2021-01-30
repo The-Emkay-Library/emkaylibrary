@@ -1,0 +1,76 @@
+A listing of all the movies currently in The Emkay Library collection.<br><br>
+        <table>
+            <tr>
+                <th>Movie ID</th>
+                <th>Artist ID</th>
+                <th>Title</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>10</td>
+                <td>Ella Enchanted</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>10</td>
+                <td>An American Crime</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>6</td>
+                <td>Guardians of the Galaxy</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>6</td>
+                <td>Guardians of the Galaxy 2</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>6</td>
+                <td>Super</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>6</td>
+                <td>Slither</td>
+            </tr>
+        </table><br>
+<h2>Update Patrons</h2>
+<form>
+  <fieldset>
+    <legend>Select Action</legend>
+    <label for="add">
+      <input type = "radio" name="action" value="add">Add
+    </label>
+    <label for="edit">
+      <input type= "radio" name="action" value="edit">Edit
+    </label>
+    <label for="delete">
+      <input type="radio" name="action" value="delete">Delete
+    </label>
+  </fieldset>
+
+<section>
+  <p>
+     <label for="movie_id">
+       <span>ID:</span>
+     </label>
+     <input type="text" id="name" name="movie_id">
+   </p>
+   <em>(Leave empty if adding a new movie)</em>
+ </section>
+   <p>
+      <label for="artist">
+        <span>Artist ID: </span>
+      </label>
+      <input type="text" id="artist_id" name="artist_id">
+    </p>
+    <p>
+       <label for="title">
+         <span>Title: </span>
+       </label>
+       <input type="text" id="title" name="title">
+     </p>
+  <button type="submit">Submit</button>
+</form>
