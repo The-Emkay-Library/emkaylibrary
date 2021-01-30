@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Setting the port
-app.set('port', 8335);
+app.set('port', 5891);
 
 
 // Setting up the views
