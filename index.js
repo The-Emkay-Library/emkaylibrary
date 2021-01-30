@@ -28,15 +28,44 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Setting the port
-app.set('port', 3000);
+app.set('port', 8335);
 
 
-// Setting up a simple hello world statement to test environment
+// Setting up the views
 app.get('/', function(req, res) {
   context = {};
   res.render('home', context);
 });
 
+app.get('/artists', function(req, res) {
+  context = {};
+  res.render('artists', context);
+});
+
+app.get('/patrons', function(req, res) {
+  context = {};
+  res.render('patrons', context);
+});
+
+app.get('/albums', function(req, res) {
+  context = {};
+  res.render('albums', context);
+});
+
+app.get('/books', function(req, res) {
+  context = {};
+  res.render('books', context);
+});
+
+app.get('/movies', function(req, res) {
+  context = {};
+  res.render('movies', context);
+});
+
+app.get('/checkout', function(req, res) {
+  context = {};
+  res.render('checkout', context);
+});
 
 
 /*
