@@ -4,3 +4,9 @@ body {
   background-color: #e4f5f7;
 
 }
+
+
+table, th, td {
+  border: 1px solid black;
+  text-align: center;
+}
