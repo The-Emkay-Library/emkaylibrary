@@ -67,6 +67,21 @@ app.get('/checkout', function(req, res) {
   res.render('checkout', context);
 });
 
+app.get('/patrons_books', function(req, res) {
+  context = {};
+  res.render('patrons_books', context);
+});
+
+app.get('/patrons_movies', function(req, res) {
+  context = {};
+  res.render('patrons_movies', context);
+});
+
+app.get('/patrons_albums', function(req, res) {
+  context = {};
+  res.render('patrons_albums', context);
+});
+
 
 /*
  * Handling Errors
