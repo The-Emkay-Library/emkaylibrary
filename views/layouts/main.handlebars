@@ -9,26 +9,47 @@
 
 <header>
 	<nav>
-		<ul>
-			<li><a href ="/">Home</a></li>
-			<li>Items</li>
-			<ul>
-				<li><a href = "/albums">Albums</a></li>
-				<li><a href = "/books">Books</a></li>
-				<li><a href = "/movies">Movies</a></li>
-			</ul>
-			<li>Members</li>
-			<ul>
-				<li><a href = "/artists">Artists</a></li>
-				<li><a href = "/patrons">Patrons</a></li>
-			</ul>
-			<li>Checkouts</li>
-			<ul>
-				<li><a href="/checkout">Checkout & Return Items</a></li>
-				<li><a href="/patrons_albums">Album Rentals</a></li>
-				<li><a href="/patrons_books">Book Rentals</a></li>
-					<li><a href="/patrons_movies">Movie Rentals</a></li>
-		</ul>
+
+			<a href ="/">Home</a>
+
+			<div class = "dropdown">
+				<button class="drop-title">Checkouts
+      		<i class="fa fa-caret-down"></i>
+    		</button>
+
+				<div class = "drop-content">
+					<a href="/checkout">Checkout & Return Items</a>
+					<a href="/patrons_albums">Album Rentals</a>
+					<a href="/patrons_books">Book Rentals</a>
+					<a href="/patrons_movies">Movie Rentals</a>
+				</div>
+
+			</div>
+
+			<div class = "dropdown">
+				<button class="drop-title">Items
+      		<i class="fa fa-caret-down"></i>
+    		</button>
+
+				<div class ="drop-content">
+					<a href = "/albums">Albums</a>
+					<a href = "/books">Books</a>
+					<a href = "/movies">Movies</a>
+				</div>
+
+			</div>
+
+			<div class = "dropdown">
+				<button class="drop-title">Members
+      		<i class="fa fa-caret-down"></i>
+    		</button>
+
+				<div class ="drop-content">
+					<a href="/artists">Artists</a>
+					<a href="/patrons">Patrons</a>
+				</div>
+
+			</div>
 
 	</nav>
 </header>
