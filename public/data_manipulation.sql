@@ -166,8 +166,8 @@ SELECT *
 FROM Patrons
 WHERE Patrons.Last_name = :patrons_last_name_input;
 -- Add a new patron
-INSERT INTO Patrons (First_name, Last_name) VALUES (:First_name_input,
-  :Last_name_input);
+INSERT INTO Patrons (First_name, Last_name, Email_address) VALUES (:First_name_input,
+  :Last_name_input, :Email_address_input);
 -- Edit an exisitng patron
 UPDATE Patrons
 SET First_Name = :patron_first_name_input

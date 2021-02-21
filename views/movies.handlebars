@@ -15,6 +15,8 @@
                 <td>Eric</td>
                 <td>Idle</td>
                 <td>Ella Enchanted</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>2</td>
@@ -22,6 +24,8 @@
                 <td>Eric</td>
                 <td>Idle</td>
                 <td>An American Crime</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>3</td>
@@ -29,6 +33,8 @@
                 <td>James</td>
                 <td>Gunn</td>
                 <td>Guardians of the Galaxy</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>4</td>
@@ -36,6 +42,8 @@
                 <td>James</td>
                 <td>Gunn</td>
                 <td>Guardians of the Galaxy 2</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>5</td>
@@ -43,6 +51,8 @@
                 <td>James</td>
                 <td>Gunn</td>
                 <td>Super</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>6</td>
@@ -50,6 +60,8 @@
                 <td>James</td>
                 <td>Gunn</td>
                 <td>Slither</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
         </table><br>
 <h2>Search Movies</h2>
@@ -62,43 +74,20 @@
 </form>
 
 
-<h2>Update Movies</h2>
-<p>Complete each form entry below to add, edit, or delete an item. If adding a
-  new item, you do not need to enter an ID - one will be created for you. </p>
+<h2>Add Movies</h2>
+<p>Complete the form to add a new movie.</p>
 <form>
-  <fieldset>
-    <legend>Select Action</legend>
-    <label for="add">
-      <input type = "radio" name="action" value="add">Add
-    </label>
-    <label for="edit">
-      <input type= "radio" name="action" value="edit">Edit
-    </label>
-    <label for="delete">
-      <input type="radio" name="action" value="delete">Delete
-    </label>
-  </fieldset>
-
-<section>
-  <p>
-     <label for="movie_id">
-       <span>ID:</span>
-     </label>
-     <input type="text" id="name" name="movie_id">
-   </p>
-   <em>(Leave empty if adding a new movie)</em>
- </section>
    <p>
       <label for="artist">
         <span>Artist ID: </span>
       </label>
-      <input type="text" id="artist_id" name="artist_id">
+      <input type="text" name="Artist_ID">
     </p>
     <p>
        <label for="title">
          <span>Title: </span>
        </label>
-       <input type="text" id="title" name="title">
+       <input type="text" name="Title">
      </p>
-  <button type="submit">Submit</button>
+  <button type="submit" value="Submit">Submit</button>
 </form>

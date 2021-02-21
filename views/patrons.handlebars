@@ -1,5 +1,5 @@
 <h1>View Library Patrons</h1>
-
+A listing of all the artists currently in The Emkay Library collection.<br><br>
 <table>
   <tr>
     <th>Patron_ID</th>
@@ -12,60 +12,80 @@
     <td>Marilyn</td>
     <td>Monroe</td>
     <td>mmonroe@gmail.com</td>
+    <td><button>Delete</button></td>
+    <td><a href="/people/{{id}}">Update</a></td>
   </tr>
   <tr>
     <td>2</td>
     <td>Abraham</td>
     <td>Lincoln</td>
     <td>abe.lincoln@gmail.com</td>
+    <td><button>Delete</button></td>
+    <td><a href="/people/{{id}}">Update</a></td>
   </tr>
   <tr>
     <td>3</td>
     <td>Nelson</td>
     <td>Mandela</td>
     <td>nmandela@hotmail.com</td>
+    <td><button>Delete</button></td>
+    <td><a href="/people/{{id}}">Update</a></td>
   </tr>
   <tr>
     <td>4</td>
     <td>John F.</td>
     <td>Kennedy</td>
     <td>jfkennedy@aol.com</td>
+    <td><button>Delete</button></td>
+    <td><a href="/people/{{id}}">Update</a></td>
   </tr>
   <tr>
     <td>5</td>
     <td>Martin Luther</td>
     <td>King</td>
     <td>mlking@gmail.com</td>
+    <td><button>Delete</button></td>
+    <td><a href="/people/{{id}}">Update</a></td>
   </tr>
   <tr>
     <td>6</td>
     <td>Winston</td>
     <td>Churchill</td>
     <td>wchurchill@sbcglobal.net</td>
+    <td><button>Delete</button></td>
+    <td><a href="/people/{{id}}">Update</a></td>
   </tr>
   <tr>
     <td>7</td>
     <td>Donald</td>
     <td>Trump</td>
     <td>djtrump@yahoo.com</td>
+    <td><button>Delete</button></td>
+    <td><a href="/people/{{id}}">Update</a></td>
   </tr>
   <tr>
     <td>8</td>
     <td>Bill</td>
     <td>Gates</td>
     <td>bgates@microsoft.com</td>
+    <td><button>Delete</button></td>
+    <td><a href="/people/{{id}}">Update</a></td>
   </tr>
   <tr>
     <td>9</td>
     <td>Muhammad</td>
     <td>Ali</td>
     <td>muhammad.ali@aol.com</td>
+    <td><button>Delete</button></td>
+    <td><a href="/people/{{id}}">Update</a></td>
   </tr>
   <tr>
     <td>10</td>
     <td>Mahatma</td>
     <td>Gandhi</td>
     <td>mgandhi@sbcglobal.net</td>
+    <td><button>Delete</button></td>
+    <td><a href="/people/{{id}}">Update</a></td>
   </tr>
 
 </table>
@@ -79,50 +99,27 @@
   <button type="submit">Search</button>
 </form>
 
-<h2>Update Patrons</h2>
-<p>Complete each form entry below to add, edit, or delete a member. If adding a
-  new member, you do not need to enter an ID - one will be created for you. </p>
-<form>
-  <fieldset>
-    <legend>Select Action</legend>
-    <label for="add">
-      <input type = "radio" name="action" value="add">Add
-    </label>
-    <label for="edit">
-      <input type= "radio" name="action" value="edit">Edit
-    </label>
-    <label for="delete">
-      <input type="radio" name="action" value="delete">Delete
-    </label>
-  </fieldset>
-
-<section>
-  <p>
-     <label for="patron_id">
-       <span>ID:</span>
-     </label>
-     <input type="text" id="name" name="patron_id">
-   </p>
-   <em>(Leave empty if adding a new patron)</em>
- </section>
+<h2>Add a New Patron</h2>
+<p>Complete the form below to add a new patron. </p>
+<form id="addPatron" action="/patrons" method="post">
    <p>
       <label for="fname">
         <span>First Name: </span>
       </label>
-      <input type="text" id="first_name" name="first_name">
+      <input type="text" name="First_name">
     </p>
     <p>
        <label for="fname">
          <span>Last Name: </span>
        </label>
-       <input type="text" id="last_name" name="last_name">
+       <input type="text"name="Last_name">
      </p>
    <p>
      <label for="email">
        <span>Email:</span>
      </label>
-     <input type="email" id="email_address" name="email_address">
+     <input type="email" name="Email_address">
    </p>
 
-  <button type="submit">Submit</button>
+  <button type="submit" value="Submit">Submit</button>
 </form>
