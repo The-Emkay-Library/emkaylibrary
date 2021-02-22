@@ -18,15 +18,15 @@ module.exports = function(){
     }
 
     row_data = {};
-    row_data.Artists = [];
+    row_data.artists = [];
     for (row in rows) {
         artist = {};
 
         artist.id      = rows[row].id;
-        artist.fname    = rows[row].name;
-        artist.lname    = rows[row].reps;
+        artist.fname    = rows[row].fname;
+        artist.lname    = rows[row].lname;
 
-        row_data.workouts.push(workout);
+        row_data.artists.push(workout);
     }
 
     context.results = JSON.stringify(rows);
