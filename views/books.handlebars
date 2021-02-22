@@ -14,6 +14,8 @@ A listing of all the books currently in The Emkay Library collection.<br><br>
                 <td>Leonard</td>
                 <td>Cohen</td>
                 <td>The Favorite Game</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>2</td>
@@ -21,6 +23,8 @@ A listing of all the books currently in The Emkay Library collection.<br><br>
                 <td>Leonard</td>
                 <td>Cohen</td>
                 <td>Beautiful Losers</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>3</td>
@@ -28,6 +32,8 @@ A listing of all the books currently in The Emkay Library collection.<br><br>
                 <td>Leonard</td>
                 <td>Cohen</td>
                 <td>Let Us Compare Mythologies</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>4</td>
@@ -35,6 +41,8 @@ A listing of all the books currently in The Emkay Library collection.<br><br>
                 <td>Leonard</td>
                 <td>Cohen</td>
                 <td>The Spice-Box of Earth</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>5</td>
@@ -42,6 +50,8 @@ A listing of all the books currently in The Emkay Library collection.<br><br>
                 <td>Jimmy</td>
                 <td>Buffett</td>
                 <td>Tales from Margaritaville</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>6</td>
@@ -49,6 +59,8 @@ A listing of all the books currently in The Emkay Library collection.<br><br>
                 <td>Jimmy</td>
                 <td>Buffett</td>
                 <td>Where is Joe Merchant?</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>7</td>
@@ -56,6 +68,8 @@ A listing of all the books currently in The Emkay Library collection.<br><br>
                 <td>Jimmy</td>
                 <td>Buffett</td>
                 <td>A Pirate Looks at Fifty</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>8</td>
@@ -63,6 +77,8 @@ A listing of all the books currently in The Emkay Library collection.<br><br>
                 <td>Jimmy</td>
                 <td>Buffett</td>
                 <td>A Salty Piece of Land</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
         </table><br>
 
@@ -75,43 +91,20 @@ A listing of all the books currently in The Emkay Library collection.<br><br>
   <button type="submit">Search</button>
 </form>
 
-<h2>Update Books</h2>
-<p>Complete each form entry below to add, edit, or delete an item. If adding a
-  new item, you do not need to enter an ID - one will be created for you. </p>
-<form>
-  <fieldset>
-    <legend>Select Action</legend>
-    <label for="add">
-      <input type = "radio" name="action" value="add">Add
-    </label>
-    <label for="edit">
-      <input type= "radio" name="action" value="edit">Edit
-    </label>
-    <label for="delete">
-      <input type="radio" name="action" value="delete">Delete
-    </label>
-  </fieldset>
-
-<section>
-  <p>
-     <label for="book_id">
-       <span>ID:</span>
-     </label>
-     <input type="text" id="name" name="book_id">
-   </p>
-   <em>(Leave empty if adding a new book)</em>
- </section>
+<h2>Add Books</h2>
+<p>Complete the form to add a new book. </p>
+<form id="addBook" action="/books" method="post">
    <p>
       <label for="artist">
         <span>Artist ID: </span>
       </label>
-      <input type="text" id="artist_id" name="artist_id">
+      <input type="text" name="Artist_ID">
     </p>
     <p>
        <label for="title">
          <span>Title: </span>
        </label>
-       <input type="text" id="title" name="title">
+       <input type="text" name="Title">
      </p>
-  <button type="submit">Submit</button>
+  <button type="submit" value="Submit">Submit</button>
 </form>

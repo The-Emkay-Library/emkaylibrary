@@ -1,61 +1,83 @@
 <h1>View Available Artists</h1>
 A listing of all the artists currently in The Emkay Library collection.<br><br>
         <table>
-            <tr>
+            <thead>
                 <th>Artist_ID</th>
                 <th>First_name</th>
                 <th>Last_name</th>
-            </tr>
+            </thead>
+            <tbody>
             <tr>
                 <td>1</td>
                 <td>Leonard</td>
                 <td>Cohen</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>Jimmy</td>
                 <td>Buffett</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>3</td>
                 <td>Patti</td>
                 <td>Smith</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>4</td>
                 <td>Akira</td>
                 <td>Kurosawa</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>5</td>
                 <td>Sydney</td>
                 <td>Lumet</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>6</td>
                 <td>James</td>
                 <td>Gunn</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>7</td>
                 <td>Anna</td>
                 <td>Sewell</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>8</td>
                 <td>Emily</td>
                 <td>Brontë</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>9</td>
                 <td>Kinka</td>
                 <td>Usher</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
             <tr>
                 <td>10</td>
                 <td>Eric</td>
                 <td>Idle</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
+          </tbody>
         </table><br>
 
 <h2>Search Artists</h2>
@@ -67,43 +89,25 @@ A listing of all the artists currently in The Emkay Library collection.<br><br>
   <button type="submit">Search</button>
 </form>
 
-<h2>Update Artists</h2>
-<p>Complete each form entry below to add, edit, or delete a member. If adding a
-  new member, you do not need to enter an ID - one will be created for you. </p>
-<form>
-  <fieldset>
-    <legend>Select Action</legend>
-    <label for="add">
-      <input type = "radio" name="action" value="add">Add
-    </label>
-    <label for="edit">
-      <input type= "radio" name="action" value="edit">Edit
-    </label>
-    <label for="delete">
-      <input type="radio" name="action" value="delete">Delete
-    </label>
-  </fieldset>
-
+<!--
+  Add a New Artist Form
+-->
+<h2>Add a New Artist</h2>
+<p>Complete each form entry below to add a member.</p>
+<form id="addArtist" action="/artists" method="post">
 <section>
-  <p>
-     <label for="artist_id">
-       <span>ID:</span>
-     </label>
-     <input type="text" id="name" name="artist_id">
-   </p>
-   <em>(Leave empty if adding a new artist)</em>
- </section>
    <p>
       <label for="artist">
         <span>First Name: </span>
       </label>
-      <input type="text" id="artist_id" name="artist_id">
+      <input type="text" name="First_name">
     </p>
     <p>
        <label for="title">
          <span>Last Name: </span>
        </label>
-       <input type="text" id="title" name="title">
+       <input type="text" name="Last_name">
      </p>
-  <button type="submit">Submit</button>
+  <button type="submit" value="Submit">Submit</button>
+  </section>
 </form>

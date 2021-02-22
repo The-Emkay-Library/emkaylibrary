@@ -7,65 +7,44 @@
 
 
 /*
- * Setting up Express & Handlebars
+ * Setting up Express, Handlebars, BodyParser & MySQL
 */
+// Allowing to keep password secret
+require('dotenv').config();
 
 var express = require('express');
-var exphbs = require('express-handlebars');
+var mysql = require('./scripts/dbcon.js');
 
 var app = express();
+var exphbs = require('express-handlebars');
 var hbs = exphbs.create({defaultLayout: 'main'});
+var router = express.Router();
 
 // Registering hbs.engine with Express app
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
+// Setting the port
+app.set('port', 5891);
+
+// Setting up SQL
+app.set('mysql', mysql);
+
 // Query parser
+var bodyParser = require('body-parser');
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
 
 // Setting up a folder for static files
 app.use(express.static('public'));
 
-// Setting the port
-app.set('port', 5891);
-
-
 // Setting up the views
-app.get('/', function(req, res) {
-  context = {};
-  res.render('home', context);
-});
-
-app.get('/artists', function(req, res) {
-  context = {};
-  res.render('artists', context);
-});
-
-app.get('/patrons', function(req, res) {
-  context = {};
-  res.render('patrons', context);
-});
-
-app.get('/albums', function(req, res) {
-  context = {};
-  res.render('albums', context);
-});
-
-app.get('/books', function(req, res) {
-  context = {};
-  res.render('books', context);
-});
-
-app.get('/movies', function(req, res) {
-  context = {};
-  res.render('movies', context);
-});
-
-app.get('/checkout', function(req, res) {
-  context = {};
-  res.render('checkout', context);
-});
+app.use('/albums', require('./scripts/albums.js'));
+app.use('/artists', require('./scripts/artists.js'));
+app.use('/books', require('./scripts/books.js'));
+app.use('/checkout', require('./scripts/checkout.js'));
+app.use('/movies', require('./scripts/movies.js'));
+app.use('/patrons', require('./scripts/patrons.js'));
 
 app.get('/patrons_books', function(req, res) {
   context = {};
@@ -81,7 +60,6 @@ app.get('/patrons_albums', function(req, res) {
   context = {};
   res.render('patrons_albums', context);
 });
-
 
 /*
  * Handling Errors
