@@ -1,33 +1,84 @@
 <h1>View Available Artists</h1>
 A listing of all the artists currently in The Emkay Library collection.<br><br>
-            <table>
-        <tr>
-            <th>Artist ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-        </tr>
-        
-        <%
-        if(userData.length!=0){
-        var i=1;
-        userData.forEach(function(data){
-        %>
-        <tr>
-            <td><%=i; %></td>
-            <td><%=data.fullName %></td>
-            <td><%=data.emailAddress %></td>
-            <td><%=data.city %></td>
-            <td><%=data.country %></td>
-            <td><a href="/users/edit/<%=data.id%>">Edit</a></td>
-            <td><a href="/users/delete/<%=data.id%>">Delete</a></td>
-        </tr>
-        <%  i++; }) %>
-        <% } else{ %>
+<table>
+            <thead>
+                <th>Artist_ID</th>
+                <th>First_name</th>
+                <th>Last_name</th>
+            </thead>
+            <tbody>
             <tr>
-                <td colspan="7">No Data Found</td>
+                <td>1</td>
+                <td>Leonard</td>
+                <td>Cohen</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
             </tr>
-        <% } %>
-    </table><br>
+            <tr>
+                <td>2</td>
+                <td>Jimmy</td>
+                <td>Buffett</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Patti</td>
+                <td>Smith</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Akira</td>
+                <td>Kurosawa</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Sydney</td>
+                <td>Lumet</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>James</td>
+                <td>Gunn</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Anna</td>
+                <td>Sewell</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Emily</td>
+                <td>Brontë</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Kinka</td>
+                <td>Usher</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Eric</td>
+                <td>Idle</td>
+                <td><button>Delete</button></td>
+                <td><a href="/people/{{id}}">Update</a></td>
+            </tr>
+          </tbody>
+        </table><br>
 
 <h2>Search Artists</h2>
 <form>
