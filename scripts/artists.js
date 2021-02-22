@@ -2,15 +2,40 @@ module.exports = function(){
   var express = require('express');
   var router = express.Router();
 
+  
   // GET route for artists page
-  router.get('/', function(req, res) {
+  router.get('/',function(req,res,next){
     var context = {};
+    
     context.scripts = [];
 
     var mysql = req.app.get('mysql');
-    res.render('artists', context);
 
-  });
+    mysql.pool.query('SELECT * FROM Artists', function(err, rows, fields){
+    if(err){
+        next(err);
+        return;
+    }
+
+    row_data = {};
+    row_data.Artists = [];
+    for (row in rows) {
+        artist = {};
+
+        artist.id      = rows[row].id;
+        artist.fname    = rows[row].name;
+        artist.lname    = rows[row].reps;
+
+        row_data.workouts.push(workout);
+    }
+
+    context.results = JSON.stringify(rows);
+    context.data = row_data;
+
+    res.render('artists', context);
+    });
+});
+
 
   // POST route for artists
   router.post('/', function(req, res) {
