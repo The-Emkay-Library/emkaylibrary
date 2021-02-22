@@ -1,84 +1,25 @@
 <h1>View Available Artists</h1>
 A listing of all the artists currently in The Emkay Library collection.<br><br>
-<table>
-            <thead>
-                <th>Artist_ID</th>
-                <th>First_name</th>
-                <th>Last_name</th>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>Leonard</td>
-                <td>Cohen</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Jimmy</td>
-                <td>Buffett</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Patti</td>
-                <td>Smith</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Akira</td>
-                <td>Kurosawa</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Sydney</td>
-                <td>Lumet</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>James</td>
-                <td>Gunn</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>Anna</td>
-                <td>Sewell</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>Emily</td>
-                <td>Brontë</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>Kinka</td>
-                <td>Usher</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>Eric</td>
-                <td>Idle</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-          </tbody>
-        </table><br>
+<table id="artists_table">
+    <thead>
+        <tr>
+            <th>Artist ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+    </thead>
+    <tbody id="artists_table_body">
+        {{#data.artists}}
+        <tr>
+            <td id="id" style="display:none">{{id}}</td>
+            <td id="fname">{{fname}}</td>
+            <td id="lname">{{lname}}</td>
+        </tr>
+        {{/data.artists}}
+    </tbody>
+</table>
+
+<br>
 
 <h2>Search Artists</h2>
 <form>
