@@ -46,6 +46,12 @@ app.use('/checkout', require('./scripts/checkout.js'));
 app.use('/movies', require('./scripts/movies.js'));
 app.use('/patrons', require('./scripts/patrons.js'));
 
+app.get('/', function(req, res) {
+  context = {};
+  res.render('home', context);
+});
+
+
 app.get('/patrons_books', function(req, res) {
   context = {};
   res.render('patrons_books', context);
