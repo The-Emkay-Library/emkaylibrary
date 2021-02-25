@@ -8,15 +8,15 @@ A listing of all the artists currently in The Emkay Library collection.<br><br>
             <th>Last Name</th>
         </tr>
     </thead>
-    <tbody id="artists_table_body">
-        {{#data.artists}}
-        <tr>
-            <td id="id" style="display:none">{{id}}</td>
-            <td id="fname">{{fname}}</td>
-            <td id="lname">{{lname}}</td>
-        </tr>
-        {{/data.artists}}
+    <tbody>
+      {{#each artists}}
+      <td>{{Artist_ID}}</td>
+      <td>{{First_name}}</td>
+      <td>{{Last_name}}</td>
+      <td><button>Delete</button></td>
+      <td><a href="/">Update</a></td>
     </tbody>
+    {{/each}}
 </table>
 
 <br>

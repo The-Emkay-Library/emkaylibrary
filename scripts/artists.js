@@ -2,11 +2,43 @@ module.exports = function(){
   var express = require('express');
   var router = express.Router();
 
-  
+  var getArtists = function(res, mysql, context, complete) {
+    mysql.pool.query("SELECT * FROM Artists;", function(error, results, fields) {
+      if (error) {
+        console.log(JSON.stringify(error));
+        res.write(JSON.stringify(error));
+        res.end();
+      }
+      context.artists = results;
+      complete();
+    })
+
+  }
+
+
   // GET route for artists page
+  router.get('/', function(req, res) {
+    var callbackCount = 0;
+    var context = {};
+    context.scripts = [];
+
+    var mysql = req.app.get('mysql');
+    getArtists(req, mysql, context, complete);
+
+    function complete() {
+      callbackCount++;
+      if (callbackCount >= 1) {
+        res.render('artists', context);
+      }
+    }
+  });
+
+
+  /*
+
   router.get('/',function(req,res,next){
     var context = {};
-    
+
     context.scripts = [];
 
     var mysql = req.app.get('mysql');
@@ -33,8 +65,10 @@ module.exports = function(){
     context.data = row_data;
 
     res.render('artists', context);
+      });
     });
-});
+
+  */
 
 
   // POST route for artists
