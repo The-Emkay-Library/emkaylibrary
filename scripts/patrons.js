@@ -2,6 +2,19 @@ module.exports = function(){
   var express = require('express');
   var router = express.Router();
 
+  var getPatrons = function(res, mysql, context, complete) {
+    mysql.pool.query("SELECT * FROM Patrons;", function(error, results, fields) {
+      if (error) {
+        console.log(JSON.stringify(error));
+        res.write(JSON.stringify(error));
+        res.end();
+      }
+      context.patrons = results;
+      complete();
+    })
+
+  }
+  
   // GET route for patrons page
   router.get('/', function(req, res) {
     var context = {};
