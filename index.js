@@ -49,8 +49,7 @@ app.use('/patrons', require('./scripts/patrons.js'));
 app.get('/', function(req, res) {
   context = {};
   res.render('home', context);
-});
-
+})
 
 app.get('/patrons_books', function(req, res) {
   context = {};
