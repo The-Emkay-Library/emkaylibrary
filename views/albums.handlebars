@@ -1,87 +1,27 @@
 <h1>View Available Albums</h1>
 
 A listing of all the albums currently in The Emkay Library collection.<br><br>
-        <table>
-            <tr>
+<table id="albums_table">
+    <thead>
+        <tr>
                 <th>Album_ID</th>
                 <th>Artist_ID</th>
                 <th>Artist First Name</th>
                 <th>Artist Last Name</th>
                 <th>Title</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>Leonard</td>
-                <td>Cohen</td>
-                <td>Songs of Leonard Cohen</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>1</td>
-                <td>Leonard</td>
-                <td>Cohen</td>
-                <td>Songs from a Room</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>1</td>
-                <td>Leonard</td>
-                <td>Cohen</td>
-                <td>Songs of Love and Hate</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>1</td>
-                <td>Leonard</td>
-                <td>Cohen</td>
-                <td>New Skin for the Old Ceremony</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>1</td>
-                <td>Leonard</td>
-                <td>Cohen</td>
-                <td>Death of a Ladies' Man</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>1</td>
-                <td>Leonard</td>
-                <td>Cohen</td>
-                <td>Recent Songs</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>1</td>
-                <td>Leonard</td>
-                <td>Cohen</td>
-                <td>Various Positions</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>1</td>
-                <td>Leonard</td>
-                <td>Cohen</td>
-                <td>I'm Your Man</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-        </table><br>
+</thead>
+    <tbody>
+      {{#each artists}}
+      <td>{{Artist_ID}}</td>
+      <td>{{First_name}}</td>
+      <td>{{Last_name}}</td>
+      <td><button>Delete</button></td>
+      <td><a href="/">Update</a></td>
+    </tbody>
+    {{/each}}
+</table>
+        <br>
 
 <h2>Search Albums</h2>
 <form>
