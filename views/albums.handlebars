@@ -12,10 +12,12 @@ A listing of all the albums currently in The Emkay Library collection.<br><br>
             </tr>
 </thead>
     <tbody>
-      {{#each artists}}
+      {{#each albums}}
+      <td>{{Album_ID}}</td>
       <td>{{Artist_ID}}</td>
       <td>{{First_name}}</td>
       <td>{{Last_name}}</td>
+      <td>{{Title}}</td>
       <td><button>Delete</button></td>
       <td><a href="/">Update</a></td>
     </tbody>
