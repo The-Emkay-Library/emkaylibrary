@@ -20,7 +20,7 @@ module.exports = function(){
   router.get('/', function(req, res) {
     var callbackCount = 0;
     var context = {};
-    context.scripts = [];
+    context.scripts = ['deleteArtist.js'];
 
     var mysql = req.app.get('mysql');
     getArtists(req, mysql, context, complete);
@@ -67,7 +67,7 @@ module.exports = function(){
     sql = mysql.pool.query(sql, inserts, function(error, results, fields) {
       if(error) {
         console.log(JSON.stringify(error));
-        
+
         res.write(JSON.stringify(error));
         res.end();
       } else {
