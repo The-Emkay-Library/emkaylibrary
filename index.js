@@ -37,6 +37,7 @@ app.use(express.json());
 
 // Setting up a folder for static files
 app.use(express.static('public'));
+app.use('/static', express.static('public'));
 
 // Setting up the views
 app.use('/albums', require('./scripts/albums.js'));

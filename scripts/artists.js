@@ -20,7 +20,7 @@ module.exports = function(){
   router.get('/', function(req, res) {
     var callbackCount = 0;
     var context = {};
-    context.scripts = [];
+    context.scripts = ['deleteArtist.js'];
 
     var mysql = req.app.get('mysql');
     getArtists(req, mysql, context, complete);
@@ -33,42 +33,25 @@ module.exports = function(){
     }
   });
 
-
-  /*
-
-  router.get('/',function(req,res,next){
-    var context = {};
-
-    context.scripts = [];
-
+  // DELETE functionality for artists page
+  router.delete('/:id', function (req, res) {
     var mysql = req.app.get('mysql');
+    var sql = "DELETE FROM Artists WHERE Artist_ID = ?;";
+    var inserts = [req.params.id];
 
-    mysql.pool.query('SELECT * FROM Artists', function(err, rows, fields){
-    if(err){
-        next(err);
-        return;
-    }
+    sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
+      if (error) {
+        console.log(error);
 
-    row_data = {};
-    row_data.artists = [];
-    for (row in rows) {
-        artist = {};
+        res.write(JSON.stringify(error));
+        res.status(400);
+        res.end();
 
-        artist.id      = rows[row].id;
-        artist.fname    = rows[row].fname;
-        artist.lname    = rows[row].lname;
-
-        row_data.artists.push(workout);
-    }
-
-    context.results = JSON.stringify(rows);
-    context.data = row_data;
-
-    res.render('artists', context);
-      });
-    });
-
-  */
+      } else {
+        res.status(202).end();
+      }
+    })
+  })
 
 
   // POST route for artists
@@ -80,9 +63,11 @@ module.exports = function(){
     var mysql = req.app.get('mysql');
     var sql = "INSERT INTO Artists (First_name, Last_name) VALUES (?, ?)";
     var inserts = [req.body.First_name, req.body.Last_name];
+
     sql = mysql.pool.query(sql, inserts, function(error, results, fields) {
       if(error) {
         console.log(JSON.stringify(error));
+
         res.write(JSON.stringify(error));
         res.end();
       } else {
