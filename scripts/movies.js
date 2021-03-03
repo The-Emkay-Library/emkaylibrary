@@ -17,12 +17,19 @@ module.exports = function(){
   
   // GET route for movies page
   router.get('/', function(req, res) {
+    var callbackCount = 0;
     var context = {};
-    context.scripts = [];
+    context.scripts = ['deleteMovie.js'];
 
     var mysql = req.app.get('mysql');
-    res.render('movies', context);
+    getMovies(req, mysql, context, complete);
 
+    function complete() {
+      callbackCount++;
+      if (callbackCount >= 1) {
+        res.render('movies', context);
+      }
+    }
   });
 
   // POST route for movies
