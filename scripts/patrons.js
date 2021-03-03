@@ -17,12 +17,19 @@ module.exports = function(){
   
   // GET route for patrons page
   router.get('/', function(req, res) {
+    var callbackCount = 0;
     var context = {};
-    context.scripts = [];
+    context.scripts = ['deletePatron.js'];
 
     var mysql = req.app.get('mysql');
-    res.render('patrons', context);
+    getPatrons(req, mysql, context, complete);
 
+    function complete() {
+      callbackCount++;
+      if (callbackCount >= 1) {
+        res.render('patrons', context);
+      }
+    }
   });
 
   // POST route for patrons
