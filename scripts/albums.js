@@ -17,12 +17,19 @@ module.exports = function(){
   
   // GET route for albums page
   router.get('/', function(req, res) {
+    var callbackCount = 0;
     var context = {};
-    context.scripts = [];
+    context.scripts = ['deleteAlbum.js'];
 
     var mysql = req.app.get('mysql');
-    res.render('albums', context);
-
+    getAlbums(req, mysql, context, complete);
+    
+    function complete() {
+      callbackCount++;
+      if (callbackCount >= 1) {
+        res.render('albums', context);
+      }
+    }   
   });
 
   // POST route for albums
