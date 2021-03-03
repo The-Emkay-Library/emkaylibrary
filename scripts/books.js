@@ -17,12 +17,19 @@ module.exports = function(){
   
   // GET route for books page
   router.get('/', function(req, res) {
+    var callbackCount = 0;
     var context = {};
-    context.scripts = [];
+    context.scripts = ['deleteBook.js'];
 
     var mysql = req.app.get('mysql');
-    res.render('books', context);
+    getBooks(req, mysql, context, complete);
 
+    function complete() {
+      callbackCount++;
+      if (callbackCount >= 1) {
+        res.render('books', context);
+      }
+    }
   });
 
   // POST route for books
