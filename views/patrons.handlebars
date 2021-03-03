@@ -1,93 +1,24 @@
 <h1>View Library Patrons</h1>
-A listing of all the artists currently in The Emkay Library collection.<br><br>
-<table>
-  <tr>
+A listing of all the patrons currently in The Emkay Library collection.<br><br>
+<table id="patrons_table">
+    <thead>
+        <tr>
     <th>Patron_ID</th>
     <th>First_name</th>
     <th>Last_name</th>
     <th>Email_address</th>
   </tr>
-  <tr>
-    <td>1</td>
-    <td>Marilyn</td>
-    <td>Monroe</td>
-    <td>mmonroe@gmail.com</td>
-    <td><button>Delete</button></td>
-    <td><a href="/people/{{id}}">Update</a></td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Abraham</td>
-    <td>Lincoln</td>
-    <td>abe.lincoln@gmail.com</td>
-    <td><button>Delete</button></td>
-    <td><a href="/people/{{id}}">Update</a></td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Nelson</td>
-    <td>Mandela</td>
-    <td>nmandela@hotmail.com</td>
-    <td><button>Delete</button></td>
-    <td><a href="/people/{{id}}">Update</a></td>
-  </tr>
-  <tr>
-    <td>4</td>
-    <td>John F.</td>
-    <td>Kennedy</td>
-    <td>jfkennedy@aol.com</td>
-    <td><button>Delete</button></td>
-    <td><a href="/people/{{id}}">Update</a></td>
-  </tr>
-  <tr>
-    <td>5</td>
-    <td>Martin Luther</td>
-    <td>King</td>
-    <td>mlking@gmail.com</td>
-    <td><button>Delete</button></td>
-    <td><a href="/people/{{id}}">Update</a></td>
-  </tr>
-  <tr>
-    <td>6</td>
-    <td>Winston</td>
-    <td>Churchill</td>
-    <td>wchurchill@sbcglobal.net</td>
-    <td><button>Delete</button></td>
-    <td><a href="/people/{{id}}">Update</a></td>
-  </tr>
-  <tr>
-    <td>7</td>
-    <td>Donald</td>
-    <td>Trump</td>
-    <td>djtrump@yahoo.com</td>
-    <td><button>Delete</button></td>
-    <td><a href="/people/{{id}}">Update</a></td>
-  </tr>
-  <tr>
-    <td>8</td>
-    <td>Bill</td>
-    <td>Gates</td>
-    <td>bgates@microsoft.com</td>
-    <td><button>Delete</button></td>
-    <td><a href="/people/{{id}}">Update</a></td>
-  </tr>
-  <tr>
-    <td>9</td>
-    <td>Muhammad</td>
-    <td>Ali</td>
-    <td>muhammad.ali@aol.com</td>
-    <td><button>Delete</button></td>
-    <td><a href="/people/{{id}}">Update</a></td>
-  </tr>
-  <tr>
-    <td>10</td>
-    <td>Mahatma</td>
-    <td>Gandhi</td>
-    <td>mgandhi@sbcglobal.net</td>
-    <td><button>Delete</button></td>
-    <td><a href="/people/{{id}}">Update</a></td>
-  </tr>
-
+  </thead>
+    <tbody>
+      {{#each patrons}}
+      <td>{{Patron_ID}}</td>
+      <td>{{First_name}}</td>
+      <td>{{Last_name}}</td>
+      <td>{{Email_Address}}</td>
+      <td><button>Delete</button></td>
+      <td><a href="/">Update</a></td>
+    </tbody>
+    {{/each}}
 </table>
 
 <h2>Search Patrons</h2>
@@ -109,7 +40,7 @@ A listing of all the artists currently in The Emkay Library collection.<br><br>
       <input type="text" name="First_name">
     </p>
     <p>
-       <label for="fname">
+       <label for="lname">
          <span>Last Name: </span>
        </label>
        <input type="text"name="Last_name">
