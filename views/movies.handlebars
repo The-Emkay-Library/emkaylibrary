@@ -1,69 +1,30 @@
 <h1>View Available Movies</h1>
 
         A listing of all the movies currently in The Emkay Library collection.<br><br>
-        <table>
-            <tr>
+        <table id="movies_table">
+    <thead>
+        <tr>
                 <th>Movie_ID</th>
                 <th>Artist_ID</th>
                 <th>Artist First Name</th>
                 <th>Artist Last Name</th>
                 <th>Title</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>10</td>
-                <td>Eric</td>
-                <td>Idle</td>
-                <td>Ella Enchanted</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>10</td>
-                <td>Eric</td>
-                <td>Idle</td>
-                <td>An American Crime</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>6</td>
-                <td>James</td>
-                <td>Gunn</td>
-                <td>Guardians of the Galaxy</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>6</td>
-                <td>James</td>
-                <td>Gunn</td>
-                <td>Guardians of the Galaxy 2</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>6</td>
-                <td>James</td>
-                <td>Gunn</td>
-                <td>Super</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>6</td>
-                <td>James</td>
-                <td>Gunn</td>
-                <td>Slither</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-        </table><br>
+            </thead>
+    <tbody>
+      {{#each movies}}
+      <td>{{Movie_ID}}</td>
+      <td>{{Artist_ID}}</td>
+      <td>{{First_name}}</td>
+      <td>{{Last_name}}</td>
+      <td>{{Title}}</td>
+      <td><button>Delete</button></td>
+      <td><a href="/">Update</a></td>
+    </tbody>
+    {{/each}}
+</table>
+
+<br>
 <h2>Search Movies</h2>
 <form>
   <label for="movie_title">

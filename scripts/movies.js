@@ -2,6 +2,19 @@ module.exports = function(){
   var express = require('express');
   var router = express.Router();
 
+  var getMovies = function(res, mysql, context, complete) {
+    mysql.pool.query("SELECT * FROM Movies;", function(error, results, fields) {
+      if (error) {
+        console.log(JSON.stringify(error));
+        res.write(JSON.stringify(error));
+        res.end();
+      }
+      context.movies = results;
+      complete();
+    })
+
+  }
+  
   // GET route for movies page
   router.get('/', function(req, res) {
     var context = {};

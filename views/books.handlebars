@@ -1,86 +1,27 @@
 <h1>View Available Books</h1>
 A listing of all the books currently in The Emkay Library collection.<br><br>
-        <table>
-            <tr>
+        <table id="books_table">
+         <thead>
+        <tr>
                 <th>Book_ID</th>
                 <th>Artist_ID</th>
                 <th>Artist First Name</th>
                 <th>Artist Last Name</th>
                 <th>Title</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>Leonard</td>
-                <td>Cohen</td>
-                <td>The Favorite Game</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>1</td>
-                <td>Leonard</td>
-                <td>Cohen</td>
-                <td>Beautiful Losers</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>1</td>
-                <td>Leonard</td>
-                <td>Cohen</td>
-                <td>Let Us Compare Mythologies</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>1</td>
-                <td>Leonard</td>
-                <td>Cohen</td>
-                <td>The Spice-Box of Earth</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>2</td>
-                <td>Jimmy</td>
-                <td>Buffett</td>
-                <td>Tales from Margaritaville</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>2</td>
-                <td>Jimmy</td>
-                <td>Buffett</td>
-                <td>Where is Joe Merchant?</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>2</td>
-                <td>Jimmy</td>
-                <td>Buffett</td>
-                <td>A Pirate Looks at Fifty</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>2</td>
-                <td>Jimmy</td>
-                <td>Buffett</td>
-                <td>A Salty Piece of Land</td>
-                <td><button>Delete</button></td>
-                <td><a href="/people/{{id}}">Update</a></td>
-            </tr>
-        </table><br>
+</thead>
+    <tbody>
+      {{#each books}}
+      <td>{{Book_ID}}</td>
+      <td>{{Artist_ID}}</td>
+      <td>{{First_name}}</td>
+      <td>{{Last_name}}</td>
+      <td>{{Title}}</td>
+      <td><button>Delete</button></td>
+      <td><a href="/">Update</a></td>
+    </tbody>
+    {{/each}}
+</table><br>
 
 <h2>Search Books</h2>
 <form>
