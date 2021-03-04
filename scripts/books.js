@@ -31,6 +31,26 @@ module.exports = function(){
       }
     }
   });
+  
+  // DELETE functionality for books page
+  router.delete('/:id', function (req, res) {
+    var mysql = req.app.get('mysql');
+    var sql = "DELETE FROM Books WHERE Book_ID = ?;";
+    var inserts = [req.params.id];
+
+    sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
+      if (error) {
+        console.log(error);
+
+        res.write(JSON.stringify(error));
+        res.status(400);
+        res.end();
+
+      } else {
+        res.status(202).end();
+      }
+    })
+  })
 
   // POST route for books
   router.post('/', function(req, res) {
