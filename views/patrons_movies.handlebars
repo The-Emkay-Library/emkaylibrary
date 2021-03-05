@@ -1,6 +1,7 @@
 <h1>View Currently Checked-Out Movies</h1>
 
-<table>
+<table id="patrons_movies_table">
+<thead>
   <tr>
     <th>Patron_ID</th>
     <th>Movie_ID</th>
@@ -8,25 +9,16 @@
     <th>Patron Last Name</th>
     <th>Movie Title</th>
   </tr>
-  <tr>
-    <td>1</td>
-    <td>2</td>
-    <td>Marilyn</td>
-    <td>Monroe</td>
-    <td>An American Crime</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>3</td>
-    <td>Marilyn</td>
-    <td>Monroe</td>
-    <td>Guardians of the Galaxy</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>1</td>
-    <td>Marilyn</td>
-    <td>Monroe</td>
-    <td>Ella Enchanted</td>
-  </tr>
+  </thead>
+    <tbody>
+      {{#each albums}}
+      <td>{{Patron_ID}}</td>
+      <td>{{Movie_ID}}</td>
+      <td>{{First_name}}</td>
+      <td>{{Last_name}}</td>
+      <td>{{Movie Title}}</td>
+      <td><button>Delete</button></td>
+      <td><a href="/">Update</a></td>
+    </tbody>
+    {{/each}}
 </table>
