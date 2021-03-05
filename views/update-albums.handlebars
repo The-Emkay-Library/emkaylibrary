@@ -1,0 +1,20 @@
+<h1>Update {{album.Title}}</h1>
+
+<p>To update this book, enter all the correct information in the form below.</p>
+<form id="update-albums" action="/albums" method="post">
+<section>
+   <p>
+      <label for="artist_id">
+        <span>Artist ID: </span>
+      </label>
+      <input type="text" name="Artist_ID" value={{album.Artist_ID}}>
+    </p>
+    <p>
+       <label for="title">
+         <span>Title: </span>
+       </label>
+       <input type="text" name="Title" value={{album.Title}}>
+     </p>
+  <button onclick="updateAlbum({{album.Album_ID}})">Update</button>
+  </section>
+</form>

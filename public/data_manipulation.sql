@@ -151,7 +151,7 @@ SET First_Name = :artist_first_name_input
 WHERE Artist_ID = :artist_id_input;
 UPDATE Artists
 SET Last_name = :artist_last_name_input
-WHERE Artists_ID = :artist_id_input;
+WHERE Artist_ID = :artist_id_input;
 -- Delete an existing artist
 DELETE FROM Artists
 WHERE Artist_ID = :artist_id_input;

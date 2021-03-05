@@ -1,0 +1,20 @@
+<h1>Update {{book.Title}}</h1>
+
+<p>To update this book, enter all the correct information in the form below.</p>
+<form id="update-books" action="/books" method="post">
+<section>
+   <p>
+      <label for="artist_id">
+        <span>Artist ID: </span>
+      </label>
+      <input type="text" name="Artist_ID" value={{book.Artist_ID}}>
+    </p>
+    <p>
+       <label for="title">
+         <span>Title: </span>
+       </label>
+       <input type="text" name="Title" value={{book.Title}}>
+     </p>
+  <button onclick="updateBook({{book.Book_ID}})">Update</button>
+  </section>
+</form>
