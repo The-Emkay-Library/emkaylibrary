@@ -1,6 +1,7 @@
 <h1>View Currently Checked-Out Books</h1>
 
-<table>
+<table id="patrons_books_table">
+<thead>
   <tr>
     <th>Patron_ID</th>
     <th>Book_ID</th>
@@ -8,25 +9,16 @@
     <th>Patron Last Name</th>
     <th>Book Title</th>
   </tr>
-  <tr>
-    <td>1</td>
-    <td>2</td>
-    <td>Marilyn</td>
-    <td>Monroe</td>
-    <td>Beautiful Losers</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>3</td>
-    <td>Marilyn</td>
-    <td>Monroe</td>
-    <td>Let Us Compare Mythologies</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>1</td>
-    <td>Marilyn</td>
-    <td>Monroe</td>
-    <td>The Favorite Game</td>
-  </tr>
+        </thead>
+    <tbody>
+      {{#each albums}}
+      <td>{{Patron_ID}}</td>
+      <td>{{Book_ID}}</td>
+      <td>{{First_name}}</td>
+      <td>{{Last_name}}</td>
+      <td>{{Book Title}}</td>
+      <td><button>Delete</button></td>
+      <td><a href="/">Update</a></td>
+    </tbody>
+    {{/each}}
 </table>
