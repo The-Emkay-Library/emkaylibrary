@@ -17,13 +17,40 @@ module.exports = function(){
   
   // GET route for books page
   router.get('/', function(req, res) {
+    var callbackCount = 0;
     var context = {};
-    context.scripts = [];
+    context.scripts = ['deleteBook.js'];
 
     var mysql = req.app.get('mysql');
-    res.render('books', context);
+    getBooks(req, mysql, context, complete);
 
+    function complete() {
+      callbackCount++;
+      if (callbackCount >= 1) {
+        res.render('books', context);
+      }
+    }
   });
+  
+  // DELETE functionality for books page
+  router.delete('/:id', function (req, res) {
+    var mysql = req.app.get('mysql');
+    var sql = "DELETE FROM Books WHERE Book_ID = ?;";
+    var inserts = [req.params.id];
+
+    sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
+      if (error) {
+        console.log(error);
+
+        res.write(JSON.stringify(error));
+        res.status(400);
+        res.end();
+
+      } else {
+        res.status(202).end();
+      }
+    })
+  })
 
   // POST route for books
   router.post('/', function(req, res) {

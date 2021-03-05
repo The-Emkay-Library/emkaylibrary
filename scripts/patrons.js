@@ -17,14 +17,41 @@ module.exports = function(){
   
   // GET route for patrons page
   router.get('/', function(req, res) {
+    var callbackCount = 0;
     var context = {};
-    context.scripts = [];
+    context.scripts = ['deletePatron.js'];
 
     var mysql = req.app.get('mysql');
-    res.render('patrons', context);
+    getPatrons(req, mysql, context, complete);
 
+    function complete() {
+      callbackCount++;
+      if (callbackCount >= 1) {
+        res.render('patrons', context);
+      }
+    }
   });
 
+  // DELETE functionality for patrons page
+  router.delete('/:id', function (req, res) {
+    var mysql = req.app.get('mysql');
+    var sql = "DELETE FROM Patrons WHERE Patron_ID = ?;";
+    var inserts = [req.params.id];
+
+    sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
+      if (error) {
+        console.log(error);
+
+        res.write(JSON.stringify(error));
+        res.status(400);
+        res.end();
+
+      } else {
+        res.status(202).end();
+      }
+    })
+  })
+  
   // POST route for patrons
   router.post('/', function(req, res) {
     console.log(req.body);
