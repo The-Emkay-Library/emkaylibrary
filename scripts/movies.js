@@ -14,7 +14,23 @@ module.exports = function(){
     })
 
   }
-  
+
+  var getMovie = function(res, mysql, context, id, complete) {
+    var sql = 'SELECT Movie_ID, Artist_ID, Title FROM Movies WHERE Movie_ID = ?;';
+    var inserts = [id];
+
+    mysql.pool.query(sql, inserts, function(error, results, fields) {
+      if (error) {
+        res.write(JSON.stringify(error));
+        res.end();
+      }
+
+      context.movie = results[0];
+      complete();
+    })
+
+  }
+
   // GET route for movies page
   router.get('/', function(req, res) {
     var callbackCount = 0;
@@ -28,6 +44,25 @@ module.exports = function(){
       callbackCount++;
       if (callbackCount >= 1) {
         res.render('movies', context);
+      }
+    }
+  });
+
+  // Rendering the UPDATE page for artists
+  router.get('/:id', function(req, res) {
+    var callbackCount = 0;
+    var context = {};
+
+    context.scripts = ['updateMovies.js'];
+
+    var mysql = req.app.get('mysql');
+    getMovie(res, mysql, context, req.params.id, complete);
+
+    function complete() {
+      callbackCount++;
+      if (callbackCount >= 1) {
+        console.log(context);
+        res.render('update-movies', context);
       }
     }
   });
@@ -51,7 +86,7 @@ module.exports = function(){
       }
     })
   })
-  
+
   // POST route for movies
   router.post('/', function(req, res) {
     console.log(req.body);
@@ -68,6 +103,32 @@ module.exports = function(){
         res.redirect('/movies');
       }
     })
+  });
+
+  // PUT route for updating artists
+  router.put('/:id', function(req, res) {
+
+    var mysql = req.app.get('mysql');
+    var sql = 'UPDATE Books SET Artist_ID = ?, Title = ? WHERE Book_ID = ?;';
+    var inserts = [req.body.First_name, req.body.Last_name, req.params.id];
+
+    console.log(req.body);
+    console.log(req.params.id);
+
+    sql = mysql.pool.query(sql, inserts, function(error, results, fields) {
+
+      if (error) {
+        console.log(error);
+
+        res.write(JSON.stringify(error));
+        res.status(400);
+        res.end();
+      } else {
+        res.status(200);
+        res.end();
+      }
+    })
+
   });
 
 
