@@ -1,7 +1,7 @@
 <h1>Update {{artist.First_name}} {{artist.Last_name}}</h1>
 
 <p>To update this artist, enter all the correct information in the form below.</p>
-<form id="update-artists" action="/artists" method="post">
+<form id="update-artists" action="/artists/" method="post">
 <section>
    <p>
       <label for="artist">
@@ -15,6 +15,6 @@
        </label>
        <input type="text" name="Last_name" value={{artist.Last_name}}>
      </p>
-  <button onclick="updateArtist({{artist.Artist_ID}})">Update</button>
+  <button type="button" onclick="updateArtist({{artist.Artist_ID}})"">Update</button>
   </section>
 </form>
