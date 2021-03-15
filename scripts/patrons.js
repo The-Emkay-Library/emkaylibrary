@@ -32,10 +32,45 @@ module.exports = function(){
 
   }
 
+  /* Find patrons whose last name starts with a given string in the req */
+   var getPeopleWithNameLike = function(req, res, mysql, context, complete) {
+
+     //sanitize the input as well as include the % character
+     var query = "SELECT * FROM Patrons WHERE Last_name LIKE " + mysql.pool.escape(req.params.s + '%');
+
+     mysql.pool.query(query, function(error, results, fields){
+           if(error){
+               res.write(JSON.stringify(error));
+               res.end();
+           }
+           context.patrons = results;
+           complete();
+       });
+   }
+
+   // Allows users to search artists with given string
+   router.get('/search/:s', function(req, res){
+       var callbackCount = 0;
+       var context = {};
+       context.scripts = ["deletePatron.js","searchPatrons.js"];
+
+       var mysql = req.app.get('mysql');
+       getPeopleWithNameLike(req, res, mysql, context, complete);
+
+       function complete(){
+           callbackCount++;
+           if(callbackCount >= 1){
+               res.render('patrons', context);
+           }
+       }
+   });
+
   // GET route for patrons page
   router.get('/', function(req, res) {
     var callbackCount = 0;
     var context = {};
+
+    context.scripts = ["deletePatron.js","searchPatrons.js"];
 
     var mysql = req.app.get('mysql');
     getPatrons(req, mysql, context, complete);

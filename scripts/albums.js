@@ -31,11 +31,43 @@ module.exports = function(){
 
   }
 
+/* Find albums whose title starts with a given string in the req */
+ var getAlbumsWithNameLike = function(req, res, mysql, context, complete) {
+
+   //sanitize the input as well as include the % character
+   var query = "SELECT * FROM Albums WHERE Title LIKE " + mysql.pool.escape(req.params.s + '%');
+
+   mysql.pool.query(query, function(error, results, fields){
+         if(error){
+             res.write(JSON.stringify(error));
+             res.end();
+         }
+         context.albums = results;
+         complete();
+     });
+ }
+
+ // Allows users to search albums with given string
+ router.get('/search/:s', function(req, res){
+     var callbackCount = 0;
+     var context = {};
+     context.scripts = ["deleteAlbum.js","searchAlbums.js"];
+
+     var mysql = req.app.get('mysql');
+     getAlbumsWithNameLike(req, res, mysql, context, complete);
+     function complete(){
+         callbackCount++;
+         if(callbackCount >= 1){
+             res.render('albums', context);
+         }
+     }
+ });
+
   // GET route for albums page
   router.get('/', function(req, res) {
     var callbackCount = 0;
     var context = {};
-    context.scripts = ['deleteAlbum.js'];
+    context.scripts = ['deleteAlbum.js', 'searchAlbums.js'];
 
     var mysql = req.app.get('mysql');
     getAlbums(req, mysql, context, complete);
@@ -43,6 +75,7 @@ module.exports = function(){
     function complete() {
       callbackCount++;
       if (callbackCount >= 1) {
+        console.log(context);
         res.render('albums', context);
       }
     }

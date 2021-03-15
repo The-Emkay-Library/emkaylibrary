@@ -26,12 +26,12 @@ A listing of all the albums currently in The Emkay Library collection.<br><br>
         <br>
 
 <h2>Search Albums</h2>
-<form>
+<form id='search-albums' action='' method=''>
   <label for="album_title">
     <span>Title:</span>
   </label>
-  <input type="text" id="album_title" name="album_title">
-  <button type="submit">Search</button>
+  <input type="text" id="title_search" name="title_search_string" value="">
+  <button type="button" onclick="searchAlbums()">Search</button>
 </form>
 
 <h2>Add a New Album</h2>

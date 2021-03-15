@@ -22,12 +22,12 @@ A listing of all the patrons currently in The Emkay Library collection.<br><br>
 </table>
 
 <h2>Search Patrons</h2>
-<form>
+<form id='search-patrons' action='' method=''>
   <label for="last_name">
     <span>Last Name:</span>
   </label>
-  <input type="text" id="patron_last_name" name="patron_last_name">
-  <button type="submit">Search</button>
+  <input type="text" id="last_name_search" name="last_name_search_string" value="">
+  <button type="button" onclick="searchPatrons()">Search</button>
 </form>
 
 <h2>Add a New Patron</h2>

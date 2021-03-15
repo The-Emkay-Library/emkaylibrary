@@ -31,11 +31,44 @@ module.exports = function(){
 
   }
 
+  /* Find albums whose title starts with a given string in the req */
+   var getBooksWithNameLike = function(req, res, mysql, context, complete) {
+
+     //sanitize the input as well as include the % character
+     var query = "SELECT * FROM Books WHERE Title LIKE " + mysql.pool.escape(req.params.s + '%');
+
+     mysql.pool.query(query, function(error, results, fields){
+           if(error){
+               res.write(JSON.stringify(error));
+               res.end();
+           }
+           context.books = results;
+           complete();
+       });
+   }
+
+   // Allows users to search books with given string
+   router.get('/search/:s', function(req, res){
+       var callbackCount = 0;
+       var context = {};
+       context.scripts = ["deleteBook.js","searchBooks.js"];
+
+       var mysql = req.app.get('mysql');
+       getBooksWithNameLike(req, res, mysql, context, complete);
+       function complete(){
+           callbackCount++;
+           if(callbackCount >= 1){
+               res.render('books', context);
+           }
+       }
+   });
+
+
   // GET route for books page
   router.get('/', function(req, res) {
     var callbackCount = 0;
     var context = {};
-    context.scripts = ['deleteBook.js'];
+    context.scripts = ['deleteBook.js', 'searchBooks.js'];
 
     var mysql = req.app.get('mysql');
     getBooks(req, mysql, context, complete);

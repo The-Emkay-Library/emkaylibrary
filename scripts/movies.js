@@ -31,11 +31,44 @@ module.exports = function(){
 
   }
 
+  /* Find albums whose title starts with a given string in the req */
+   var getMoviesWithNameLike = function(req, res, mysql, context, complete) {
+
+     //sanitize the input as well as include the % character
+     var query = "SELECT * FROM Movies WHERE Title LIKE " + mysql.pool.escape(req.params.s + '%');
+
+     mysql.pool.query(query, function(error, results, fields){
+           if(error){
+               res.write(JSON.stringify(error));
+               res.end();
+           }
+           context.movies = results;
+           complete();
+       });
+   }
+
+   // Allows users to search movies with given string
+   router.get('/search/:s', function(req, res){
+       var callbackCount = 0;
+       var context = {};
+       context.scripts = ["deleteMovie.js","searchMovies.js"];
+
+       var mysql = req.app.get('mysql');
+       getMoviesWithNameLike(req, res, mysql, context, complete);
+       function complete(){
+           callbackCount++;
+           if(callbackCount >= 1){
+               res.render('movies', context);
+           }
+       }
+   });
+
+
   // GET route for movies page
   router.get('/', function(req, res) {
     var callbackCount = 0;
     var context = {};
-    context.scripts = ['deleteMovie.js'];
+    context.scripts = ['deleteMovie.js', 'searchMovies.js'];
 
     var mysql = req.app.get('mysql');
     getMovies(req, mysql, context, complete);
