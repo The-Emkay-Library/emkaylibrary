@@ -35,7 +35,7 @@ module.exports = function(){
  var getAlbumsWithNameLike = function(req, res, mysql, context, complete) {
 
    //sanitize the input as well as include the % character
-   var query = "SELECT * FROM Albums WHERE Title LIKE " + mysql.pool.escape(req.params.s + '%');
+   var query = "SELECT * FROM Albums JOIN Artists WHERE (Albums.Artist_ID = Artists.Artist_ID AND Title LIKE " + mysql.pool.escape(req.params.s + '%') + ");";
 
    mysql.pool.query(query, function(error, results, fields){
          if(error){

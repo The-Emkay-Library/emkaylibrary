@@ -15,6 +15,7 @@ module.exports = function(){
 
   }
 
+
   var getMovie = function(res, mysql, context, id, complete) {
     var sql = 'SELECT Movie_ID, Artist_ID, Title FROM Movies WHERE Movie_ID = ?;';
     var inserts = [id];
@@ -35,7 +36,7 @@ module.exports = function(){
    var getMoviesWithNameLike = function(req, res, mysql, context, complete) {
 
      //sanitize the input as well as include the % character
-     var query = "SELECT * FROM Movies WHERE Title LIKE " + mysql.pool.escape(req.params.s + '%');
+     var query = "SELECT * FROM Movies JOIN Artists WHERE (Movies.Artist_ID = Artists.Artist_ID AND Title LIKE " + mysql.pool.escape(req.params.s + '%') + ");";
 
      mysql.pool.query(query, function(error, results, fields){
            if(error){
@@ -46,6 +47,7 @@ module.exports = function(){
            complete();
        });
    }
+
 
    // Allows users to search movies with given string
    router.get('/search/:s', function(req, res){
