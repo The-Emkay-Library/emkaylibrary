@@ -26,18 +26,18 @@
 
 <br>
 <h2>Search Movies</h2>
-<form>
+<form id='search-movies' action='' method=''>
   <label for="movie_title">
     <span>Title:</span>
   </label>
-  <input type="text" id="movie_title" name="movie_title">
-  <button type="submit">Search</button>
+  <input type="text" id="title_search" name="title_search_string" value="">
+  <button type="button" onclick="searchMovies()">Search</button>
 </form>
 
 
 <h2>Add Movies</h2>
 <p>Complete the form to add a new movie.</p>
-<form>
+<form action="/movies" method="post">
    <p>
       <label for="artist">
         <span>Artist ID: </span>

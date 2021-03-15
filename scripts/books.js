@@ -3,7 +3,7 @@ module.exports = function(){
   var router = express.Router();
 
   var getBooks = function(res, mysql, context, complete) {
-    mysql.pool.query("SELECT * FROM Books;", function(error, results, fields) {
+    mysql.pool.query("SELECT * FROM Books JOIN Artists WHERE Artists.Artist_ID = Books.Artist_ID;", function(error, results, fields) {
       if (error) {
         console.log(JSON.stringify(error));
         res.write(JSON.stringify(error));
@@ -31,11 +31,44 @@ module.exports = function(){
 
   }
 
+  /* Find albums whose title starts with a given string in the req */
+   var getBooksWithNameLike = function(req, res, mysql, context, complete) {
+
+     //sanitize the input as well as include the % character
+     var query = "SELECT * FROM Books JOIN Artists WHERE (Books.Artist_ID = Artists.Artist_ID AND Title LIKE " + mysql.pool.escape(req.params.s + '%') + ");";
+
+     mysql.pool.query(query, function(error, results, fields){
+           if(error){
+               res.write(JSON.stringify(error));
+               res.end();
+           }
+           context.books = results;
+           complete();
+       });
+   }
+
+   // Allows users to search books with given string
+   router.get('/search/:s', function(req, res){
+       var callbackCount = 0;
+       var context = {};
+       context.scripts = ["deleteBook.js","searchBooks.js"];
+
+       var mysql = req.app.get('mysql');
+       getBooksWithNameLike(req, res, mysql, context, complete);
+       function complete(){
+           callbackCount++;
+           if(callbackCount >= 1){
+               res.render('books', context);
+           }
+       }
+   });
+
+
   // GET route for books page
   router.get('/', function(req, res) {
     var callbackCount = 0;
     var context = {};
-    context.scripts = ['deleteBook.js'];
+    context.scripts = ['deleteBook.js', 'searchBooks.js'];
 
     var mysql = req.app.get('mysql');
     getBooks(req, mysql, context, complete);
@@ -109,7 +142,7 @@ module.exports = function(){
 
     var mysql = req.app.get('mysql');
     var sql = 'UPDATE Books SET Artist_ID = ?, Title = ? WHERE Book_ID = ?;';
-    var inserts = [req.body.First_name, req.body.Last_name, req.params.id];
+    var inserts = [req.body.Artist_ID, req.body.Title, req.params.id];
 
     console.log(req.body);
     console.log(req.params.id);
