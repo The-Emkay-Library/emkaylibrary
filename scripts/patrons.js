@@ -36,7 +36,6 @@ module.exports = function(){
   router.get('/', function(req, res) {
     var callbackCount = 0;
     var context = {};
-    context.scripts = ['deletePatron.js'];
 
     var mysql = req.app.get('mysql');
     getPatrons(req, mysql, context, complete);
@@ -44,7 +43,6 @@ module.exports = function(){
     function complete() {
       callbackCount++;
       if (callbackCount >= 1) {
-        console.log(context);
         res.render('patrons', context);
       }
     }

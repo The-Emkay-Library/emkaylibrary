@@ -7,14 +7,11 @@
       <label for="artist_id">
         <span>Artist ID: </span>
       </label>
-      <input type="text" name="Artist_ID" value={{movie.Artist_ID}}>
+      <input type="text" name="Artist_ID" value="{{movie.Artist_ID}}">
     </p>
     <p>
-       <label for="title">
-         <span>Title: </span>
-       </label>
-       <input type="text" name="Title" value={{movie.Title}}>
-     </p>
+         <span>Title: </span> <input type="text" name="Title" value="{{movie.Title}}">
+       </p>
   <button type="button" onclick="updateMovie({{movie.Movie_ID}})">Update</button>
   </section>
 </form>
