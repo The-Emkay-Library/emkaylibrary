@@ -3,7 +3,7 @@ module.exports = function(){
   var router = express.Router();
 
   var getAlbums = function(res, mysql, context, complete) {
-    mysql.pool.query("SELECT * FROM Albums;", function(error, results, fields) {
+    mysql.pool.query("SELECT * FROM Albums JOIN Artists WHERE Artists.Artist_ID = Albums.Artist_ID;", function(error, results, fields) {
       if (error) {
         console.log(JSON.stringify(error));
         res.write(JSON.stringify(error));
@@ -86,30 +86,12 @@ module.exports = function(){
     })
   })
 
-  // POST route for albums
-  router.post('/', function(req, res) {
-    console.log(req.body);
-
-    var mysql = req.app.get('mysql');
-    var sql = "INSERT INTO Albums (Artist_ID, Title) VALUES (?, ?)";
-    var inserts = [req.body.Artist_ID, req.body.Title];
-    sql = mysql.pool.query(sql, inserts, function(error, results, fields) {
-      if(error) {
-        console.log(JSON.stringify(error));
-        res.write(JSON.stringify(error));
-        res.end();
-      } else {
-        res.redirect('/albums');
-      }
-    })
-  });
-
   // PUT route for updating artists
   router.put('/:id', function(req, res) {
 
     var mysql = req.app.get('mysql');
-    var sql = 'UPDATE Books SET Artist_ID = ?, Title = ? WHERE Book_ID = ?;';
-    var inserts = [req.body.First_name, req.body.Last_name, req.params.id];
+    var sql = 'UPDATE Albums SET Artist_ID = ?, Title = ? WHERE Album_ID = ?;';
+    var inserts = [req.body.Artist_ID, req.body.Title, req.params.id];
 
     console.log(req.body);
     console.log(req.params.id);
@@ -129,6 +111,27 @@ module.exports = function(){
     })
 
   });
+
+  // POST route for albums
+  router.post('/', function(req, res) {
+    console.log(req.body);
+
+    var mysql = req.app.get('mysql');
+    var sql = "INSERT INTO Albums (Artist_ID, Title) VALUES (?, ?)";
+    var inserts = [req.body.Artist_ID, req.body.Title];
+
+    sql = mysql.pool.query(sql, inserts, function(error, results, fields) {
+      if(error) {
+        console.log(JSON.stringify(error));
+        res.write(JSON.stringify(error));
+        res.end();
+      } else {
+        res.redirect('/albums');
+      }
+    })
+  });
+
+
 
 
   return router;

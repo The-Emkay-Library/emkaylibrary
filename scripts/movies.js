@@ -3,7 +3,7 @@ module.exports = function(){
   var router = express.Router();
 
   var getMovies = function(res, mysql, context, complete) {
-    mysql.pool.query("SELECT * FROM Movies;", function(error, results, fields) {
+    mysql.pool.query("SELECT * FROM Movies JOIN Artists WHERE Artists.Artist_ID = Movies.Artist_ID;", function(error, results, fields) {
       if (error) {
         console.log(JSON.stringify(error));
         res.write(JSON.stringify(error));
@@ -93,7 +93,7 @@ module.exports = function(){
 
     var mysql = req.app.get('mysql');
     var sql = "INSERT INTO Movies (Artist_ID, Title) VALUES (?, ?);";
-    var inserts = [req.body.First_name, req.body.Last_name];
+    var inserts = [req.body.Artist_ID, req.body.Title];
     sql = mysql.pool.query(sql, inserts, function(error, results, fields) {
       if(error) {
         console.log(JSON.stringify(error));
@@ -109,11 +109,14 @@ module.exports = function(){
   router.put('/:id', function(req, res) {
 
     var mysql = req.app.get('mysql');
-    var sql = 'UPDATE Books SET Artist_ID = ?, Title = ? WHERE Book_ID = ?;';
-    var inserts = [req.body.First_name, req.body.Last_name, req.params.id];
+    var sql = 'UPDATE Movies SET Artist_ID = ?, Title = ? WHERE Movie_ID = ?;';
+    var inserts = [req.body.Artist_ID, req.body.Title, req.params.id];
 
+    console.log("PUT Request:");
     console.log(req.body);
     console.log(req.params.id);
+
+    console.log(inserts);
 
     sql = mysql.pool.query(sql, inserts, function(error, results, fields) {
 
