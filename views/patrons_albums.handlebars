@@ -1,32 +1,18 @@
 <h1>View Currently Checked-Out Albums</h1>
 
-<table>
-  <tr>
-    <th>Patron_ID</th>
-    <th>Album_ID</th>
-    <th>Patron First Name</th>
-    <th>Patron Last Name</th>
-    <th>Album Title</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>2</td>
-    <td>Marilyn</td>
-    <td>Monroe</td>
-    <td>Songs from a Room</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>3</td>
-    <td>Marilyn</td>
-    <td>Monroe</td>
-    <td>Songs of Love and Hate</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>1</td>
-    <td>Nelson</td>
-    <td>Mandela</td>
-    <td>Songs of Leonard Cohen/td>
-  </tr>
+A listing of all the albums currently checked out from The Emkay Library collection.<br><br>
+<table id="albums_checkouts_table">
+    <thead>
+        <tr>
+                <th>Album_ID</th>
+                <th>Patron_ID</th>
+            </tr>
+    </thead>
+    <tbody>
+      {{#each albums}}
+      <td>{{Album_ID}}</td>
+      <td>{{Patron_ID}}</td>
+    </tbody>
+    {{/each}}
 </table>
+        <br>
