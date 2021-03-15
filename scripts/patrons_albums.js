@@ -31,11 +31,11 @@ module.exports = function(){
 
   }
 
-  // GET route for albums page
+  // GET route for patrons_albums page
   router.get('/', function(req, res) {
     var callbackCount = 0;
     var context = {};
-    context.scripts = ['deleteAlbum.js'];
+    context.scripts = [];
 
     var mysql = req.app.get('mysql');
     getAlbums(req, mysql, context, complete);

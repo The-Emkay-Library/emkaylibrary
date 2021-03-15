@@ -1,4 +1,4 @@
-function updateAlbums(id){
+function updateAlbum(id){
 
     $.ajax({
 
