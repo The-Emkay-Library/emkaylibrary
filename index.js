@@ -25,7 +25,7 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 // Setting the port
-app.set('port', 5891);
+app.set('port', 8765);
 
 // Setting up SQL
 app.set('mysql', mysql);
@@ -36,7 +36,6 @@ app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
 
 // Setting up a folder for static files
-app.use(express.static('public'));
 app.use('/static', express.static('public'));
 
 // Setting up the views
@@ -46,6 +45,7 @@ app.use('/books', require('./scripts/books.js'));
 app.use('/checkout', require('./scripts/checkout.js'));
 app.use('/movies', require('./scripts/movies.js'));
 app.use('/patrons', require('./scripts/patrons.js'));
+app.use('/', express.static('public'));
 
 app.get('/', function(req, res) {
   context = {};

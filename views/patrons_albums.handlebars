@@ -1,24 +1,18 @@
 <h1>View Currently Checked-Out Albums</h1>
 
-<table id="patrons_albums_table">
-<thead>
-  <tr>
-    <th>Patron_ID</th>
-    <th>Album_ID</th>
-    <th>Patron First Name</th>
-    <th>Patron Last Name</th>
-    <th>Album Title</th>
-  </tr>
-      </thead>
+A listing of all the albums currently checked out from The Emkay Library collection.<br><br>
+<table id="albums_checkouts_table">
+    <thead>
+        <tr>
+                <th>Album_ID</th>
+                <th>Patron_ID</th>
+            </tr>
+    </thead>
     <tbody>
       {{#each albums}}
-      <td>{{Patron_ID}}</td>
       <td>{{Album_ID}}</td>
-      <td>{{First_name}}</td>
-      <td>{{Last_name}}</td>
-      <td>{{Album_title}}</td>
-      <td><button>Delete</button></td>
-      <td><a href="/">Update</a></td>
+      <td>{{Patron_ID}}</td>
     </tbody>
     {{/each}}
 </table>
+        <br>

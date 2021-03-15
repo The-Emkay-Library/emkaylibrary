@@ -1,0 +1,26 @@
+<h1>Update {{patron.First_name}} {{patron.Last_name}}</h1>
+
+<p>To update this artist, enter all the correct information in the form below.</p>
+<form id="update-patrons" action="/patrons" method="post">
+<section>
+   <p>
+      <label for="patron">
+        <span>First Name: </span>
+      </label>
+      <input type="text" name="First_name" value="{{patron.First_name}}">
+    </p>
+    <p>
+       <label for="title">
+         <span>Last Name: </span>
+       </label>
+       <input type="text" name="Last_name" value="{{patron.Last_name}}">
+     </p>
+     <p>
+        <label for="email">
+          <span>Email Address: </span>
+        </label>
+        <input type="email" name="Email_address" value="{{patron.Email_address}}">
+      </p>
+  <button type="button" onclick="updatePatron({{patron.Patron_ID}})">Update</button>
+  </section>
+</form>

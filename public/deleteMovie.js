@@ -2,7 +2,7 @@ function deleteMovie(id){
 
     $.ajax({
 
-        url: '/moviess/' + id,
+        url: '/movies/' + id,
         type: 'DELETE',
 
         success: function(result){
