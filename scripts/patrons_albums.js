@@ -3,13 +3,14 @@ module.exports = function(){
   var router = express.Router();
 
   var getPatronsAlbums = function(res, mysql, context, complete) {
-    mysql.pool.query("SELECT * FROM Patrons_Albums;", function(error, results, fields) {
+    mysql.pool.query("SELECT Patrons.Patron_ID, Albums.Album_ID, Patrons.First_name, Patrons.Last_name, Albums.Title FROM Patrons JOIN Patrons_Albums ON (Patrons.Patron_ID = Patrons_Albums.Patron_ID) JOIN Albums ON (Albums.Album_ID = Patrons_Albums.Album_ID);", function(error, results, fields) {
       if (error) {
         console.log(JSON.stringify(error));
         res.write(JSON.stringify(error));
         res.end();
       }
       context.albums = results;
+      console.log(context);
       complete();
     })
 
@@ -33,12 +34,13 @@ module.exports = function(){
 
   // GET route for patrons_albums page
   router.get('/', function(req, res) {
+    console.log("hello");
     var callbackCount = 0;
     var context = {};
     context.scripts = [];
 
     var mysql = req.app.get('mysql');
-    getAlbums(req, mysql, context, complete);
+    getPatronsAlbums(res, mysql, context, complete);
 
     function complete() {
       callbackCount++;

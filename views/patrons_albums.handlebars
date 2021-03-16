@@ -2,17 +2,24 @@
 
 A listing of all the albums currently checked out from The Emkay Library collection.<br><br>
 <table id="albums_checkouts_table">
-    <thead>
-        <tr>
-                <th>Album_ID</th>
-                <th>Patron_ID</th>
-            </tr>
-    </thead>
-    <tbody>
-      {{#each albums}}
-      <td>{{Album_ID}}</td>
-      <td>{{Patron_ID}}</td>
-    </tbody>
-    {{/each}}
+  <thead>
+    <tr>
+      <th>Album_ID</th>
+      <th>Patron_ID</th>
+      <th>Patron First Name</th>
+      <th>Patron Last Name</th>
+      <th>Album Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each albums}}
+    <tr>
+    <td>{{Album_ID}}</td>
+    <td>{{Patron_ID}}</td>
+    <td>{{First_name}}</td>
+    <td>{{Last_name}}</td>
+    <td>{{Title}}</td>
+      {{/each}}
+  </tr>
+  </tbody>
 </table>
-        <br>

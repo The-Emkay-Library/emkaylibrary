@@ -46,6 +46,7 @@ app.use('/checkout', require('./scripts/checkout.js'));
 app.use('/movies', require('./scripts/movies.js'));
 app.use('/patrons', require('./scripts/patrons.js'));
 app.use('/', express.static('public'));
+app.use('/patrons_albums', require('./scripts/patrons_albums'));
 
 app.get('/', function(req, res) {
   context = {};
@@ -60,11 +61,6 @@ app.get('/patrons_books', function(req, res) {
 app.get('/patrons_movies', function(req, res) {
   context = {};
   res.render('patrons_movies', context);
-});
-
-app.get('/patrons_albums', function(req, res) {
-  context = {};
-  res.render('patrons_albums', context);
 });
 
 /*
