@@ -35,7 +35,7 @@ module.exports = function(){
   router.get('/', function(req, res) {
     var callbackCount = 0;
     var context = {};
-    context.scripts = [];
+    context.scripts = ['returnMovie.js'];
 
     var mysql = req.app.get('mysql');
     getPatronsMovies(req, mysql, context, complete);
@@ -47,6 +47,27 @@ module.exports = function(){
       }
     }
   });
+
+
+  // DELETE functionality for Patrons_Movies
+  router.delete('/:patron_id/:movie_id', function (req, res) {
+    var mysql = req.app.get('mysql');
+    var sql = "DELETE FROM Patrons_Movies WHERE Patron_ID = ? AND Movie_ID = ?;";
+    var inserts = [req.params.patron_id, req.params.movie_id];
+
+    sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
+      if (error) {
+        console.log(error);
+
+        res.write(JSON.stringify(error));
+        res.status(400);
+        res.end();
+
+      } else {
+        res.status(202).end();
+      }
+    })
+  })
 
 
 

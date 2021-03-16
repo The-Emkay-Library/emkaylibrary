@@ -1,5 +1,4 @@
-<h1>Checkout or Return Items</h1>
-<h2>Checkout an Item</h2>
+<h1>Checkout Items</h1>
 <form id="checkoutItem" action="/checkout" method="post">
 
   <fieldset>
@@ -31,39 +30,4 @@
    </section>
 
   <button type="submit" value="Submit">Submit</button>
-</form>
-
-
-<h2>Return an Item</h2>
-<form>
-
-  <fieldset>
-    <legend>Item Type</legend>
-    <label for="album">
-      <input type = "radio" name="action" value="album">Album
-    </label>
-    <label for="book">
-      <input type= "radio" name="action" value="book">Book
-    </label>
-    <label for="movie">
-      <input type= "radio" name="action" value="movie">Movie
-    </label>
-  </fieldset>
-
-<section>
-  <p>
-     <label for="patron_id">
-       <span>Patron ID:</span>
-     </label>
-     <input type="text" id="name" name="patron_id">
-   </p>
-   <p>
-      <label for="item_id">
-        <span>Item ID:</span>
-      </label>
-      <input type="text" id="name" name="item_id">
-    </p>
-   </section>
-
-  <button type="submit">Submit</button>
 </form>

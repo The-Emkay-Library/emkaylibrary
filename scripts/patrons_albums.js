@@ -37,7 +37,7 @@ module.exports = function(){
     console.log("hello");
     var callbackCount = 0;
     var context = {};
-    context.scripts = [];
+    context.scripts = ['returnAlbum.js'];
 
     var mysql = req.app.get('mysql');
     getPatronsAlbums(res, mysql, context, complete);
@@ -49,6 +49,28 @@ module.exports = function(){
       }
     }
   });
+
+  // DELETE functionality for Patrons_Albums
+  router.delete('/:patron_id/:album_id', function (req, res) {
+    var mysql = req.app.get('mysql');
+    var sql = "DELETE FROM Patrons_Albums WHERE Patron_ID = ? AND Album_ID = ?;";
+    var inserts = [req.params.patron_id, req.params.album_id];
+
+    sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
+      if (error) {
+        console.log(error);
+
+        res.write(JSON.stringify(error));
+        res.status(400);
+        res.end();
+
+      } else {
+        res.status(202).end();
+      }
+    })
+  })
+
+
 
 
 

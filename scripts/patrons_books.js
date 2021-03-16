@@ -35,7 +35,7 @@ module.exports = function(){
   router.get('/', function(req, res) {
     var callbackCount = 0;
     var context = {};
-    context.scripts = [];
+    context.scripts = ['returnBook.js'];
 
     var mysql = req.app.get('mysql');
     getPatronsBooks(res, mysql, context, complete);
@@ -47,6 +47,26 @@ module.exports = function(){
       }
     }
   });
+
+  // DELETE functionality for Patrons_Books
+  router.delete('/:patron_id/:book_id', function (req, res) {
+    var mysql = req.app.get('mysql');
+    var sql = "DELETE FROM Patrons_Books WHERE Patron_ID = ? AND Book_ID = ?;";
+    var inserts = [req.params.patron_id, req.params.book_id];
+
+    sql = mysql.pool.query(sql, inserts, function (error, results, fields) {
+      if (error) {
+        console.log(error);
+
+        res.write(JSON.stringify(error));
+        res.status(400);
+        res.end();
+
+      } else {
+        res.status(202).end();
+      }
+    })
+  })
 
 
 
