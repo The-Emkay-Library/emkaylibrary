@@ -25,7 +25,7 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 // Setting the port
-app.set('port', 8765);
+app.set('port', 8764);
 
 // Setting up SQL
 app.set('mysql', mysql);
