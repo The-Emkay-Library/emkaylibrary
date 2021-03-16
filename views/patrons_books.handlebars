@@ -5,20 +5,12 @@
   <tr>
     <th>Patron_ID</th>
     <th>Book_ID</th>
-    <th>Patron First Name</th>
-    <th>Patron Last Name</th>
-    <th>Book Title</th>
   </tr>
         </thead>
     <tbody>
-      {{#each albums}}
+      {{#each books}}
       <td>{{Patron_ID}}</td>
       <td>{{Book_ID}}</td>
-      <td>{{First_name}}</td>
-      <td>{{Last_name}}</td>
-      <td>{{Book Title}}</td>
-      <td><button>Delete</button></td>
-      <td><a href="/">Update</a></td>
     </tbody>
     {{/each}}
 </table>
