@@ -3,7 +3,7 @@ module.exports = function(){
   var router = express.Router();
 
   var getPatronsBooks = function(res, mysql, context, complete) {
-    mysql.pool.query("SELECT * FROM Patrons_Books;", function(error, results, fields) {
+    mysql.pool.query("SELECT Patrons.Patron_ID, Books.Book_ID, Patrons.First_name, Patrons.Last_name, Books.Title FROM Patrons JOIN Patrons_Books ON (Patrons.Patron_ID = Patrons_Books.Patron_ID) JOIN Books ON (Books.Book_ID = Patrons_Books.Book_ID);", function(error, results, fields) {
       if (error) {
         console.log(JSON.stringify(error));
         res.write(JSON.stringify(error));
@@ -38,7 +38,7 @@ module.exports = function(){
     context.scripts = [];
 
     var mysql = req.app.get('mysql');
-    getAlbums(req, mysql, context, complete);
+    getPatronsBooks(res, mysql, context, complete);
 
     function complete() {
       callbackCount++;

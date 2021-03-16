@@ -6,12 +6,20 @@ A listing of all the albums currently checked out from The Emkay Library collect
   <tr>
     <th>Patron_ID</th>
     <th>Book_ID</th>
+    <th>Patron First Name</th>
+    <th>Patron Last Name</th>
+    <th>Album Title</th>
   </tr>
         </thead>
     <tbody>
       {{#each books}}
+      <tr>
       <td>{{Patron_ID}}</td>
       <td>{{Book_ID}}</td>
+      <td>{{First_name}}</td>
+      <td>{{Last_name}}</td>
+      <td>{{Title}}</td>
+    </tr>
+      {{/each}}
     </tbody>
-    {{/each}}
 </table>

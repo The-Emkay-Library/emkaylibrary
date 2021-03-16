@@ -47,21 +47,13 @@ app.use('/movies', require('./scripts/movies.js'));
 app.use('/patrons', require('./scripts/patrons.js'));
 app.use('/', express.static('public'));
 app.use('/patrons_albums', require('./scripts/patrons_albums'));
+app.use('/patrons_books', require('./scripts/patrons_books'));
+app.use('/patrons_movies', require('./scripts/patrons_movies'));
 
 app.get('/', function(req, res) {
   context = {};
   res.render('home', context);
 })
-
-app.get('/patrons_books', function(req, res) {
-  context = {};
-  res.render('patrons_books', context);
-});
-
-app.get('/patrons_movies', function(req, res) {
-  context = {};
-  res.render('patrons_movies', context);
-});
 
 /*
  * Handling Errors
